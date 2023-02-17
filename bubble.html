@@ -1,0 +1,29 @@
+<script>
+// Сортировка массива методом "пузырька".
+
+
+let userInput = prompt("Введите значение через запятую:");
+let userArray = userInput.split(",");
+userArray = userArray.map(Number);
+
+let resultArray = bubbleSort(userArray);
+document.write(resultArray.join(", "));
+
+function bubbleSort(array){
+	let sorted;
+	
+do{
+sorted = true;
+for (let i=1; i<array.lenth; i++){
+	if(array[i]< array[i-1]){
+		let tmp = array[i-1];
+		array[i-1] = array[i];
+		array[i]=tmp;
+		sorted = false;
+	}
+}
+
+} while(!sorted);
+return array;
+}
+</script>
