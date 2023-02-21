@@ -1,0 +1,30 @@
+<script>  //7.	Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс». Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
+
+
+
+function formatTime(hours, minutes = 0, seconds = 0) {
+
+ if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) {
+    alert('Некорректное время!');
+  }
+
+  let formattedHours = hours;
+  if(hours<10) {formattedHours = "0" + hours;}
+  
+  let formattedMinutes = minutes;
+  if(minutes<10) {formattedMinutes = "0" + minutes;}
+  
+  let formattedSeconds = seconds;
+  if(seconds<10) {formattedSeconds = "0" + seconds;}
+  
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+let hours = Number(prompt("Введите часы:"));
+let minutes = Number(prompt("Введите минуты:"));
+let seconds = Number(prompt("Введите секунды:"));
+
+alert(formatTime(hours, minutes, seconds));
+
+
+</script>

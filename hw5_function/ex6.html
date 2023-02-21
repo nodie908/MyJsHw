@@ -1,0 +1,15 @@
+<script>  //6.	Написать рекурсивную функцию, которая вычисляет факториал переданного ей числа.
+
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+
+let num = Number(prompt("Введите число фактариал которого вы хотите найти:"));
+let result = factorial(num);
+alert(`Факториал числа ${num} равен ${result}`);
+
+</script>

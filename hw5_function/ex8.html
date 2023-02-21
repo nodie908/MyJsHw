@@ -1,0 +1,19 @@
+<script>  //8.	Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
+
+function timeToSeconds(hours, minutes, seconds) {
+
+if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) {
+    alert('Некорректное время!');
+  }
+  
+  return hours * 3600 + minutes * 60 + seconds;
+  
+}
+
+let hours = Number(prompt("Введите часы:"));
+let minutes = Number(prompt("Введите минуты:"));
+let seconds = Number(prompt("Введите секунды:"));
+let totalSeconds = timeToSeconds(hours, minutes, seconds);
+alert(`Кол-во секунд в введеном вами временем: ${totalSeconds}`); 
+
+</script>

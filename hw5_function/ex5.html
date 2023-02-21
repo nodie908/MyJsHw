@@ -1,0 +1,29 @@
+<script>  //5.	Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет.
+
+
+function perfectNumbers(min, max) {
+  let result = [];
+  
+ for (let num = min; num <= max; num++) {
+   let sum = 0;
+    for (let i = 1; i <= num / 2; i++) {
+      if (num % i === 0) {
+        sum += i;
+      }
+    }
+    if (sum === num) {
+      result.push(num);
+    }
+ }
+  return result;
+}
+
+let min = Number(prompt("Введите  минимальное число:"));
+let max = Number(prompt("Введите максимальное число:"));
+
+let itog = perfectNumbers(min, max);
+
+alert(`Совершенные числа в диапазоне от ${min} до ${max}:  ${itog}`); 
+
+
+</script>

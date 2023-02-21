@@ -1,0 +1,21 @@
+<script>  //2.	Написать функцию, которая принимает три отдельные цифры и превращает их в одно число. Например: цифры 1, 4, 9 превратятся в число 149.
+
+
+function numConnect(a,b,c){
+
+	let connect= a*100+b*10+c;
+	return connect;
+}
+
+let a = Number(prompt("Введите первое число:"));
+let b = Number(prompt("Введите второе число:"));
+let c = Number(prompt("Введите третье число:"));
+
+let result;
+	result=numConnect(a,b,c);
+	alert(`Ваш результат: ${result}`);
+
+
+
+
+</script>

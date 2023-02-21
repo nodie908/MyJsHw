@@ -1,0 +1,20 @@
+<script>  //9.	Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».
+
+function secondsToTime(totalSeconds) {
+  let hours = Math.floor(totalSeconds / 3600);
+  let minutes = Math.floor((totalSeconds % 3600) / 60);
+  let seconds = totalSeconds % 60;
+
+  let formattedHours = hours.toString();
+  let formattedMinutes = minutes.toString();
+  let formattedSeconds = seconds.toString();
+
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+let totalSeconds = Number(prompt("Введите количество секунд:"));
+let result = secondsToTime(totalSeconds);
+alert(`${result} в формате чч:мм:сс`)
+
+
+</script>

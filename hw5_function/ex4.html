@@ -1,0 +1,27 @@
+<script>  //4.	Написать функцию, которая проверяет, является ли переданное ей число совершенным. Совершенное число – это число, равное сумме всех своих собственных делителей.
+
+function perfectNumber(num) {
+
+  let sum = 0;
+
+  for (let i = 1; i <= num / 2; i++) {
+    if (num % i === 0) {
+      sum += i;
+    }
+  }
+
+  return sum === num;
+}
+
+let num = Number(prompt("Введите число:"));
+
+let result = perfectNumber(num);
+
+if (result) {
+  alert("Ваше число совершенное");
+} 	else  {
+		alert("Ваше число несовершенное");
+	}	
+
+
+</script>

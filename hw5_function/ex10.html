@@ -1,0 +1,34 @@
+<script>  //10.	11.	Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс».
+
+function diffDates(hours1, minutes1, seconds1, hours2, minutes2, seconds2) {
+
+  const time1 = hours1 * 3600 + minutes1 * 60 + seconds1;
+  const time2 = hours2 * 3600 + minutes2 * 60 + seconds2;
+  
+  let totalSeconds = Math.abs(time1 - time2);
+
+  let hours = Math.floor(totalSeconds / 3600);
+  let minutes = Math.floor((totalSeconds % 3600) / 60);
+  let seconds = totalSeconds % 60;
+
+  let formattedHours = hours.toString();
+  let formattedMinutes = minutes.toString();
+  let formattedSeconds = seconds.toString();
+
+  return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+let hours1 = Number(prompt("Введите чч первой даты:"));
+let minutes1 = Number(prompt("Введите мм первой даты :"));
+let seconds1 = Number(prompt("Введите сс второй даты:"));
+
+let hours2 = Number(prompt("Введите чч второй даты:"));
+let minutes2 = Number(prompt("Введите мм второй даты:"));
+let seconds2 = Number(prompt("Введите сс второй даты:"));
+
+let result = diffDates(hours1, minutes1, seconds1, hours2, minutes2, seconds2);
+alert(`${result} в формате чч:мм:сс`)
+
+
+</script>
+
