@@ -1,0 +1,41 @@
+<script>  //5.	Резюме. Спросите у пользователя его ФИО. Затем в цикле спрашивайте, в каком году он начал работать, в каком году уволился, и как называлось это место работы. Если пользователь не ввёл ничего, прервите цикл, и напечатайте в браузере его резюме, а в конце укажите, сколько лет составляет его общий стаж работы.
+
+let fullName = prompt('Введите своё ФИО:');
+
+let jobs = [];
+let startYear, endYear, companyName;
+
+while (true) {
+  startYear = prompt('В каком году вы начали работать?');
+  if (!startYear) {
+    break;
+  }
+
+  endYear = prompt('В каком году вы уволились?');
+  if (!endYear) {
+    break;
+  }
+
+  companyName = prompt('Название компании, где вы работали?');
+  if (!companyName) {
+    break;
+  }
+
+  jobs.push({ startYear: parseInt(startYear), endYear: parseInt(endYear), companyName });
+}
+
+let totalExperience = 0;
+if (jobs.length > 0) {
+  totalExperience = jobs[jobs.length - 1].endYear - jobs[0].startYear;
+}
+
+let resume = `Резюме. ФИО: ${fullName}. Опыт работы:\n`;
+for (let i = 0; i < jobs.length; i++) {
+  resume += `- ${jobs[i].companyName} с ${jobs[i].startYear} по ${jobs[i].endYear}\n`;
+}
+resume += `Общий стаж работы: ${totalExperience} лет.`;
+
+alert(resume);
+
+
+</script>

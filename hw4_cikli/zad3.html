@@ -1,0 +1,18 @@
+<script>  //3.	Пользователь вводит число любой длины. Вывести сумму всех цифр в числе и их произведение.
+
+let number = prompt("Введите число:"); 
+let sum = 0; 
+let multiply = 1; 
+
+while (number > 0) {
+  let num = number % 10; 
+  sum += num; 
+  multiply *= num; 
+  number = Math.floor(number / 10); 
+}
+
+alert(`Сумма цифр: ${sum}`);
+alert(`Произведение цифр: ${multiply}`);
+
+
+</script>

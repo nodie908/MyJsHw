@@ -1,0 +1,20 @@
+<script>  //6.	Ипотека. Спросите у пользователя стоимость квартиры, которую он хочет приобрести, процентную ставку банка и количество лет, за которое он собирается выплатить эту ипотеку. Считаем, что проценты начисляются каждый месяц. Рассчитать и вывести ежемесячный платёж по кредиту(с учётом процентов), размер последнего платежа и общую сумму переплаты за кредит.
+
+let generalPrice = prompt("Введите стоимость квартиры:");
+let percentOfBank = prompt("Введите процентную ставку банка:");
+let years = prompt("Введите количество лет для выплаты:");
+
+let months = years * 12;
+let monthPercent = percentOfBank / 100 / 12;
+let monthlyPayment = (generalPrice * monthPercent) / (1 - Math.pow(1 + monthPercent, -months));
+let ipotekaPrice = monthlyPayment * months;
+let pereplata = ipotekaPrice - generalPrice;
+
+alert(`Ежемесячный платёж: ${monthlyPayment.toFixed(2)} тг.
+Размер последнего платежа: ${(monthlyPayment + (ipotekaPrice % monthlyPayment)).toFixed(2)} тг.
+Общая сумма переплаты: ${pereplata.toFixed(2)} тг.`);
+
+
+
+
+</script>

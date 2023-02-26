@@ -1,0 +1,27 @@
+<script>  //4.	Билет считается счастливым, если в его номере сумма первой половины цифр равна сумме второй половины цифр. Пользователь вводит номер билета любой длины. Проверьте, счастливый ли это билет.
+
+let ticketNumber = prompt('Введите номер билета:');
+let ticketString = ticketNumber.toString();
+let halfLength = Math.floor(ticketString.length / 2);
+let firstHalf = ticketString.slice(0, halfLength);
+let secondHalf = ticketString.slice(-halfLength);
+
+let sumFirstHalf = 0;
+let sumSecondHalf = 0;
+
+for (let i = 0; i < firstHalf.length; i++) {
+  sumFirstHalf += parseInt(firstHalf[i]);
+}
+
+for (let i = 0; i < secondHalf.length; i++) {
+  sumSecondHalf += parseInt(secondHalf[i]);
+}
+
+if (sumFirstHalf === sumSecondHalf) {
+  alert(`Билет ${ticketNumber} - счастливый!`);
+} else {
+  alert(`Билет ${ticketNumber} - несчастливый.`);
+}
+
+
+</script>
