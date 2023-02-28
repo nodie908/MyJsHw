@@ -1,0 +1,36 @@
+<script>
+
+function camel(str) {
+  let result = '';
+  let currentCase = 'upper';
+
+  for (let i = 0; i < str.length; i++) {
+    let symbol = str[i];
+    if (/[a-zA-Zа-яА-Я]/.test(symbol)) {
+      if (currentCase === 'upper') {
+        result += symbol.toUpperCase();
+        currentCase = 'lower';
+      } else {
+        result += symbol.toLowerCase();
+        currentCase = 'upper';
+      }
+    } else {
+      result += symbol;
+    }
+  }
+
+  return result;
+}
+
+let str = prompt("Введите строку: ");
+
+let result = camel(str);
+
+alert(result);
+
+function test_camel(str){
+console.assert(camel('Hello World!') === 'HeLlO wOrLd!', 'Test Case 1 Failed');
+console.assert(camel('Hello-_Word') === 'HeLlO-_wOrLd', 'Test Case 2 Failed');
+
+}
+</script>

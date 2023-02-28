@@ -1,0 +1,48 @@
+<script>  //Oпределить 3 наиболее часто встречаемых символа в строке. Пробелы не учитывать при подсчете. Требуется написать функцию top3(st), возвращающую массив. Итог работы функции представить в виде строки: «символ – количество раз, символ – количество раз…».
+
+function top3(st) {
+
+  let elements = [];
+  let counts = [];
+
+  for (let element of st) {
+    if (element === ' ') {
+      continue;
+    }
+
+    let index = elements.indexOf(element);
+    if (index === -1) {
+      elements.push(element);
+      counts.push(1);
+    } else {
+      counts[index]++;
+    }
+  }
+
+  let pairs = elements.map((element, index) => [element, counts[index]]);
+
+  pairs.sort((a, b) => b[1] - a[1]);
+
+  let top3Pairs = pairs.slice(0, 3);
+
+  let top3Strings = top3Pairs.map(pair => `${pair[0]} – ${pair[1]} раз`);
+
+  return top3Strings.join(', ');
+}
+
+let str = prompt('Введите любую строку и мы определим 3 наиболее часто встречаемых символа в строке');
+
+let result = top3(str);
+
+alert(`3 наиболее часто встречаемых символа в строке это: ${result}`);
+
+ function test_top3(st) {
+console.assert(top3('hello world') === 'l – 3 раз, o – 2 раз, e – 1 раз', 'Test Case 1 Failed');
+console.assert(top3('aaabbbccc') === 'c – 3 раз, b – 3 раз, a – 3 раз', 'Test Case 2 Failed');
+console.assert(top3('abcde') === 'a – 1 раз, b – 1 раз, c – 1 раз', 'Test Case 3 Failed');
+console.assert(top3('abccde') === 'c – 2 раз, a – 1 раз, b – 1 раз', 'Test Case 4 Failed');
+console.assert(top3('aabbcc') === 'c – 2 раз, b – 2 раз, a – 2 раз', 'Test Case 5 Failed');
+console.assert(top3('') === '', 'Test Case 6 Failed');
+}
+
+</script>

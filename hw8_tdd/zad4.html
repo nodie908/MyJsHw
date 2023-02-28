@@ -1,0 +1,38 @@
+<script>
+
+function shorten(str) {
+  let result = '';
+  let stack = [];
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    if (char === '(') {
+      stack.push(i);
+    } else if (char === ')') {
+      if (stack.length) {
+        stack.pop();
+      } else {
+        continue;
+      }
+    } else if (!stack.length) {
+      result += char;
+    }
+  }
+
+  return result;
+}
+
+
+let str = prompt("Введите строку: ");
+
+let result = shorten(str);
+
+alert(result);
+
+function test_shorten(str){
+console.assert(shorten('Hello (world)') === 'Hello', 'Test Case 1 Failed');
+console.assert(shorten('Hello (wo(r)ld)') === 'Hello', 'Test Case 2 Failed');
+console.assert(shorten('Hello (w(o)r)ld)') === 'Hello ld', 'Test Case 3 Failed');
+}
+</script>

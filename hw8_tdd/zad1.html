@@ -1,0 +1,35 @@
+<script>  //Требуется определить индексы первого и последнего вхождения буквы в строке. Для этого нужно написать функцию firstAndLast(letter, str), включающую 2 параметра: letter – искомый символ(буква), str – целевая строка. Функция возвращает массив из двух индексов. В случае отсутствия буквы в строке, нужно вернуть [-1, -1].
+
+function firstAndLast(letter,str){
+
+	let firstIndex = str.indexOf(letter);
+	let lastIndex = str.lastIndexOf(letter);
+	
+	if (firstIndex === -1) {
+	return[-1,1];
+	}else{
+	return[firstIndex,lastIndex];
+	}
+}
+
+let letter = prompt('Введите искомый символ: ');
+
+let str = prompt('Введите строку:');
+
+let index = firstAndLast(letter,str);
+
+alert(`Индексы первого и последнего вхождения буквы в строке: ${index}`);
+
+
+function test_firstandLast(letter,str){
+
+console.assert(JSON.stringify(firstAndLast('a', 'abcde')) === JSON.stringify([1, 9]), 'Test Case 1 Failed');
+console.assert(JSON.stringify(firstAndLast('b', 'abcde')) === JSON.stringify([1, 1]), 'Test Case 2 Failed');
+console.assert(JSON.stringify(firstAndLast('c', 'abcde')) === JSON.stringify([2, 2]), 'Test Case 3 Failed');
+console.assert(JSON.stringify(firstAndLast('d', 'abcde')) === JSON.stringify([3, 3]), 'Test Case 4 Failed');
+console.assert(JSON.stringify(firstAndLast('e', 'abcde')) === JSON.stringify([4, 4]), 'Test Case 5 Failed');
+console.assert(JSON.stringify(firstAndLast('f', 'abcde')) === JSON.stringify([-1, -1]), 'Test Case 6 Failed');
+
+}
+
+</script>
