@@ -1,0 +1,99 @@
+<script>
+
+class Animal {
+  constructor(name, weight, size) {
+    this.name = name;
+    this.weight = weight;
+    this.size = size;
+  }
+  
+  talk() {
+    console.log("Mmmmmmm");
+  }
+  
+  eat(meal) {
+    const mealLength = meal.length;
+    this.weight += mealLength;
+    this.size += mealLength;
+  }
+}
+
+const cow = new Animal('Cow',100,50);
+
+class Herbivore extends Animal {
+  constructor(name, weight, size, ratio) {
+    super(name, weight, size);
+    this.ratio = ratio;
+  }
+  
+  eat(meal) {
+    if (this.ratio.includes(meal)) {
+      super.eat(meal);
+    } else {
+      console.log(`${this.name} не может есть ${meal}`);
+    }
+  }
+}
+
+class Predator extends Animal {
+      constructor(name, weight, size, meals) {
+    super(name, weight, size);
+    this.meals = [];
+};
+
+  eat(animal) {
+    if (
+      animal instanceof Animal &&
+      animal.size < this.size &&
+      animal.weight < this.weight &&
+      !this.meals.includes(animal)
+    ) {
+      super.eat(animal.name);
+      this.size += animal.size * 0.2;
+      this.weight += animal.weight * 0.2;
+      this.meals.push(animal);
+    } else {
+      console.log(`${this.name} не может съесть ${animal.name}`);
+    }
+
+
+    }
+
+}
+
+
+class Goose extends Herbivore{
+    constructor(name, weight, size, ratio, agressiveOrNone){
+        super(name, weight, size, ratio);
+        this.agressiveOrNone = agressiveOrNone;
+    }
+
+    talk(){
+        console.log(`Гаа-гааа-гаааа-гаа`);
+    }
+
+    walk(){
+        if(this.agressiveOrNone === "agressive"){
+            console.log(`go away from this goose`);
+        } else {console.log("this is a peaceful goose he wont touch you")}
+    }
+
+}
+
+class Wolf extends Predator{
+    constructor(name, weight, size, meals, huntingArea){
+        super(name, weight, size, meals);
+        this.huntingArea = huntingArea;
+    }
+
+    talk(){
+        console.log(`УУУУУУУУУУУУУУУ-ууууууу...`)
+    }
+
+    hunt(){
+        console.log(`${this.name} охотится в местности ${this.huntingArea}!`); 
+    }
+}
+
+
+</script>
