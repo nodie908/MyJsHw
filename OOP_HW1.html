@@ -1,0 +1,66 @@
+<script>
+
+let employees = [];
+let numId = 1;
+
+function newEmployee(fullName, birthDate, position, salary){
+    let[firstName, lastName] = fullName.split(" ");
+    if(!firstName || !lastName){
+        return{id: -1, errorDescription: "Enter correct full name"};
+    }
+    if(!birthDate|| isNaN(birthDate)){
+        return{id: -1, errorDescription: "Enter correct birthDate"}; 
+    }
+    if(!position){
+        return{id: -1, errorDescription: "Enter correct position"}; 
+    }
+    if(!salary|| isNaN(salary)){
+        return{id: -1, errorDescription: "Enter correct salary"}; 
+    }
+
+    let employee = {
+        id: numId++,
+        firstName,
+        lastName,
+        birthDate: new Date(birthDate),
+        hiredDate: new Date(),
+        firedDate: null,
+        position,
+        salary
+    };
+    employees.push(employee);
+
+}
+
+function fireEmployee(id){
+    let employeeIndex = employees.findIndex(e => e.id === id);
+    if (employeeIndex === -1){
+        return {id: -1, errorDescription: "We do not have this employee"};
+    }
+
+    employees[employeeIndex].firedDate = new Date();
+  return {id: id, errorDescription: null};
+}
+
+function getEmployeeId(fullName) {
+  let [firstName, lastName] = fullName.split(' ');
+  let employee = employees.find(e => e.firstName === firstName && e.lastName === lastName);
+  return employee ? employee.id : {id: -1, errorDescription: 'Employee wasnt found'};
+}
+
+function getEmployeeRecord(id) {
+  let employee = employees.find(e => e.id === id);
+  return employee ? employee : {id: -1, errorDescription: 'Employee wasnt found'};
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
