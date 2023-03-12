@@ -1,14 +1,14 @@
 <script>
 
 let employees = [];
-let numId = 1;
+let id = 1;
 
 function newEmployee(fullName, birthDate, position, salary){
     let[firstName, lastName] = fullName.split(" ");
     if(!firstName || !lastName){
         return{id: -1, errorDescription: "Enter correct full name"};
     }
-    if(!birthDate|| isNaN(birthDate)){
+    if(!birthDate|| isNaN(Date.parse(birthDate))){
         return{id: -1, errorDescription: "Enter correct birthDate"}; 
     }
     if(!position){
@@ -19,7 +19,7 @@ function newEmployee(fullName, birthDate, position, salary){
     }
 
     let employee = {
-        id: numId++,
+        id: id++,
         firstName,
         lastName,
         birthDate: new Date(birthDate),
@@ -29,7 +29,7 @@ function newEmployee(fullName, birthDate, position, salary){
         salary
     };
     employees.push(employee);
-
+    return employee;
 }
 
 function fireEmployee(id){
@@ -53,6 +53,18 @@ function getEmployeeRecord(id) {
   return employee ? employee : {id: -1, errorDescription: 'Employee wasnt found'};
 }
 
+function getEmployeeList(selector) {
+    let copyEmployees = [...employees]; 
+    let selectedEmployees = [];
+
+  for (let employee of copyEmployees) {
+    if (selector(employee)) {
+      selectedEmployees.push({...employee}); 
+    }
+  }
+
+  return selectedEmployees;
+}
 
 
 
