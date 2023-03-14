@@ -1,0 +1,27 @@
+<script>  //6.	Массив может содержать элементы разных типов. Напишите функцию, которая проверяет, одинакового типа все элементы в массиве или нет.
+
+function checkSameType(arr) {
+    let type = typeof arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (typeof arr[i] !== type) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function test_checkSameType() {
+  
+  console.assert(checkSameType([1, 2, 3]), true, 
+  'Ошибка: не все элементы массива одного типа');
+  console.assert(checkSameType(['one', 'two', 'three']), true, 
+  'Ошибка: не все элементы массива одного типа');
+  console.assert(checkSameType([null, null, null]), true, 
+  'Ошибка: не все элементы массива одного типа');
+
+}
+
+test_checkSameType();
+
+
+  </script>

@@ -1,0 +1,38 @@
+<script>  //1.	В массиве найти максимальную длину последовательности неубывающих чисел.
+
+function findMaxLength(arr) {
+ 
+  
+  let maxLength = 1;
+  let currentLength = 1;
+  
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] >= arr[i-1]) {
+      currentLength++;
+    } else {
+      maxLength = Math.max(maxLength, currentLength);
+      currentLength = 1;
+    }
+  }
+  
+  maxLength = Math.max(maxLength, currentLength);
+  
+  return maxLength;
+}
+
+let input = prompt('Введите массив чисел через запятую:');
+let arr = input.split(',').map(Number);
+
+let maxLength = findMaxLength(arr);
+
+alert(`Максимальная длина последовательности неубывающих чисел: ${maxLength}`);
+
+function test_findMaxLength() {
+  console.assert(findMaxLength([1, 2, 3, 4, 5]) === 5, "Тест 1 не пройден.");
+  console.assert(findMaxLength([1, 2, 3, 2, 4, 5]) === 3, "Тест 2 не пройден.");
+  console.assert(findMaxLength([5, 4, 3, 2, 1]) === 1, "Тест 3 не пройден.");
+}
+
+test_findMaxLength();
+
+</script>

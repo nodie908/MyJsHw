@@ -1,0 +1,31 @@
+<script>  //3.	Элементы массива содежит фамилии и имена сотрудников в виде строк: ["Фамилия1 Имя1", "Фамилия2 Имя2", ...]. Найти и вывести в документ всех однофамильцев.
+
+function oneFam(employees) {
+  let oneSurname = {};
+  for (let i = 0; i < employees.length; i++) {
+    let surname = employees[i].split(" ")[0];
+    if (!oneSurname[surname]) {
+      oneSurname[surname] = [employees[i]];
+    } else {
+      oneSurname[surname].push(employees[i]);
+    }
+  }
+  return oneSurname;
+}
+
+
+function test_oneFam() {
+  const employees = ["Иванов Иван", "Петров Петр", "Сидоров Сидор", "Иванова Мария", "Петрова Анна"];
+  const oneSurname = oneFam(employees);
+
+  console.assert(oneSurname["Иванов"].length === 2, "Ошибка: количество однофамильцев не совпадает");
+  console.assert(oneSurname["Петров"].length === 2, "Ошибка: количество однофамильцев не совпадает");
+  console.assert(oneSurname["Сидоров"].length === 1, "Ошибка: количество однофамильцев не совпадает");
+
+}
+
+test_oneFam();
+
+
+
+</script>

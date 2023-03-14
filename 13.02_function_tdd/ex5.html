@@ -1,0 +1,30 @@
+<script>  //5.	Пользователь вводит массив чисел userArray. Cформировать массив resultArray по правилу: resultArray[i] = userArray[1] + userArray[2] + ... + userArray[i].
+
+function getResultArray(userArray) {
+  let resultArray = [];
+  let sum = 0;
+  for (let i = 0; i < userArray.length; i++) {
+    sum += userArray[i];
+    resultArray.push(sum);
+  }
+  return resultArray;
+}
+
+function test_getResultArray() {
+  console.assert(
+    getResultArray([1, 2, 3, 4, 5]).toString() === "1,3,6,10,15",
+    "Error: Incorrect result"
+  );
+  console.assert(
+    getResultArray([0, 1, 2, 3, 4]).toString() === "0,1,3,6,10",
+    "Error: Incorrect result"
+  );
+
+}
+
+test_getResultArray();
+
+
+
+
+</script>

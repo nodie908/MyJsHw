@@ -1,0 +1,53 @@
+<script>  //2.	В массиве хранятся имена сотрудников, которым была выписана премия за месяц. Проверить, не попал ли кто-либо из сотрудников в эту базу дважды: вывести эти имена в документ, а из массива все повторения удалить.
+
+function removeDuplicates(employees) {
+  let duplicates = [];
+
+  for (let i = 0; i < employees.length; i++) {
+    let name = employees[i];
+    let isDuplicate = false;
+
+    for (let j = i + 1; j < employees.length; j++) {
+      if (name === employees[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    if (isDuplicate) {
+      duplicates.push(name);
+    }
+  }
+
+  for (let i = 0; i < duplicates.length; i++) {
+    let name = duplicates[i];
+    let index = employees.indexOf(name);
+    employees.splice(index, 1);
+  }
+
+  console.log(`Список дубликатов: ${duplicates.join(', ')}`);
+
+  return employees;
+}
+
+let input = prompt('Введите массив имён через запятую:');
+let arr = input.split(',');
+
+let duplicatesArray = removeDuplicates(arr);
+
+alert(`Результат списка без дупликатов: ${duplicatesArray}`);
+
+function test_removeDuplicates() {
+  let arr = ['Иван', 'Анна', 'Петр', 'Андрей', 'Анна', 'Сергей', 'Мария', 'Иван'];
+  let result = removeDuplicates(arr);
+  let expected = ['Иван', 'Анна', 'Петр', 'Андрей', 'Сергей', 'Мария'];
+  
+  console.assert(
+    result === expected,
+    'Работает корректно'
+  );
+}
+
+test_removeDuplicates();
+
+</script>
