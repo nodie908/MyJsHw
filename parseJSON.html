@@ -1,0 +1,34 @@
+<script>
+
+function parseJSON(jsonString){
+  let jsonObject = JSON.parse(jsonString);
+  let result = [];
+  for(let key in jsonObject){
+    let value = jsonObject[key];
+    let valueType = typeof value;
+    result.push({key, value, valueType});
+  }
+  return result;
+}
+
+function test_parseJSON(){
+
+let testJSON = '{"id": 35, "name": "Robert", "married": true}';
+
+let expectedOutput = [
+  { key: 'id', value: 35, valueType: 'number' },
+  { key: 'name', value: 'Robert', valueType: 'string' },
+  { key: 'married', value: true, valueType: 'boolean' }
+];
+
+console.assert(JSON.stringify(parseJSON(testJSON)) === JSON.stringify(expectedOutput), 'Ошибка: неверный результат');
+}
+
+test_parseJSON();
+
+
+
+
+
+
+</script>
