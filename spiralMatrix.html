@@ -1,0 +1,69 @@
+<script>
+
+function getSpiralMatrix(n, m) {
+  if (!n || !m) return [];
+
+  let matrix = [];
+  for (let i = 0; i < n; i++) {
+    matrix.push(new Array(m).fill(0));
+  }
+
+  let rowStart = 0,
+    rowEnd = n - 1;
+  let colStart = 0,
+    colEnd = m - 1;
+
+  let num = 0;
+
+  while (rowStart <= rowEnd && colStart <= colEnd) {
+    for (let row = rowStart; row <= rowEnd; row++) {
+      matrix[row][colEnd] = num++;
+    }
+    colEnd--;
+
+    if (rowStart <= rowEnd) {
+      for (let col = colEnd; col >= colStart; col--) {
+        matrix[rowEnd][col] = num++;
+      }
+      rowEnd--;
+    }
+
+    if (colStart <= colEnd) {
+      for (let row = rowEnd; row >= rowStart; row--) {
+        matrix[row][colStart] = num++;
+      }
+      colStart++;
+    }
+
+    if (rowStart <= rowEnd) {
+      for (let col = colStart; col <= colEnd; col++) {
+        matrix[rowStart][col] = num++;
+      }
+      rowStart++;
+    }
+  }
+
+  return matrix;
+}
+
+
+function test_getSpiralMatrix() {
+		let size = [2,2];
+		let expect = [[3,0],
+				 [2,1]];
+		console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+		size = [4,5];
+		expect = [[10, 11, 12, 13, 0],
+			    [ 9, 18, 19, 14, 1],
+			    [ 8, 17, 16, 15, 2],
+			    [ 7, 6,   5,  4, 3]];
+		console.assert(getSpiralMatrix(...size).toString() === expect.toString());
+
+		console.assert(getSpiralMatrix().toString() === [].toString());
+}
+
+test_getSpiralMatrix()
+
+</script>
+
