@@ -1,0 +1,24 @@
+<script>
+
+    function replaceDigitsWithWords(str) {
+        const digitsToWords = {
+            '0': 'ноль',
+            '1': 'один',
+            '2': 'два',
+            '3': 'три',
+            '4': 'четыре',
+            '5': 'пять',
+            '6': 'шесть',
+            '7': 'семь',
+            '8': 'восемь',
+            '9': 'девять'
+        };
+
+        return str.replace(/\d/g, match => digitsToWords[match]);
+    }
+
+    console.assert(replaceDigitsWithWords('1234567890') === 'одиндватричетырепятьшестьсемьвосемьдевятьноль', 'Test Case 1 Failed');
+    console.assert(replaceDigitsWithWords('Hello World!') === 'Hello World!', 'Test Case 2 Failed');
+
+
+</script>

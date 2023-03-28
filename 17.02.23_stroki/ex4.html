@@ -1,0 +1,41 @@
+<script>
+    function polandCode(str) {
+        let stack = [];
+        let elements = str.split(" ");
+        for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            if (!isNaN(element)) {
+                stack.push(parseFloat(element));
+            } else {
+                let num2 = stack.pop();
+                let num1 = stack.pop();
+                switch (element) {
+                    case "+":
+                        stack.push(num1 + num2);
+                        break;
+                    case "-":
+                        stack.push(num1 - num2);
+                        break;
+                    case "*":
+                        stack.push(num1 * num2);
+                        break;
+                    case "/":
+                        stack.push(num1 / num2);
+                        break;
+                    default:
+                        console.log(`Undefined operation: ${element}`);
+
+                }
+            }
+        }
+        return stack.pop();
+    }
+
+    let result = polandCode("5 3 2 * +");
+    console.log(result);
+
+    console.assert(polandCode('5 3 2 * +') === 11, 'Case failed "5 3 2 * +"');
+    console.assert(polandCode('12 3 - 3 /') === 3, 'Case failed "12 3 - 3 /"');
+    console.assert(polandCode('3 2 -') === 1, 'Case failed "3 2 -"');
+
+</script>
