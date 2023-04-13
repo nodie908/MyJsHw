@@ -1,0 +1,91 @@
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomMatrix(rows, columns) {
+        if (!rows || !columns) return [];
+
+        let matrix = [];
+        for (let i = 0; i < rows; i++) {
+            matrix.push([]);
+            for (let j = 0; j < columns; j++) {
+                matrix[i].push(getRandomInt(-10, 10));
+            }
+        }
+        return matrix;
+    }
+
+    function findRowAndColumnWithMostZeros(matrix) {
+        let rowWithMostZeros = -1;
+        let columnWithMostZeros = -1;
+        let mostZeros = 0;
+
+        for (let i = 0; i < matrix.length; i++) {
+            let zerosInRow = 0;
+            for (let j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] === 0) {
+                    zerosInRow++;
+                }
+            }
+            if (zerosInRow > mostZeros) {
+                rowWithMostZeros = i;
+                mostZeros = zerosInRow;
+            }
+        }
+
+        for (let j = 0; j < matrix[0].length; j++) {
+            let zerosInColumn = 0;
+            for (let i = 0; i < matrix.length; i++) {
+                if (matrix[i][j] === 0) {
+                    zerosInColumn++;
+                }
+            }
+            if (zerosInColumn > mostZeros) {
+                columnWithMostZeros = j;
+                mostZeros = zerosInColumn;
+            }
+        }
+
+        return { row: rowWithMostZeros, column: columnWithMostZeros };
+    }
+
+    function deleteRowAndColumn(matrix, rowIndex, columnIndex) {
+        matrix.splice(rowIndex, 1);
+        for (let i = 0; i < matrix.length; i++) {
+            matrix[i].splice(columnIndex, 1);
+        }
+    }
+
+    let rows = 5;
+    let columns = 4;
+    let matrix = getRandomMatrix(rows, columns);
+
+
+    document.write("<pre>");
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            document.write(matrix[i][j] + "\t");
+        }
+        document.write("\n");
+    }
+    document.write("</pre><br>");
+
+    let { row, column } = findRowAndColumnWithMostZeros(matrix);
+    if (row !== -1 && column !== -1) {
+        document.write(`Удаляем строку ${row + 1} и столбец ${column + 1} с наибольшим количеством нулей.`);
+        deleteRowAndColumn(matrix, row, column);
+    } else {
+        document.write('В матрице нет нулей.');
+    }
+
+    document.write("<pre>");
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            document.write(matrix[i][j] + "\t");
+        }
+        document.write("\n");
+    }
+    document.write("</pre>");
+
+</script>

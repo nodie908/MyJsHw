@@ -1,0 +1,56 @@
+<script>
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function getRandomMatrix(rows, columns) {
+    if (!rows || !columns) return [];
+
+    let matrix = [];
+    for (let i = 0; i < rows; i++) {
+      matrix.push([]);
+      for (let j = 0; j < columns; j++) {
+        matrix[i].push(getRandomInt(-10, 10));
+      }
+    }
+    return matrix;
+  }
+
+  let rows = 5;
+  let columns = 4;
+  let matrix = getRandomMatrix(rows, columns);
+
+  console.log("Матрица:");
+  console.table(matrix);
+
+  let sumInRow = [];
+  for (let i = 0; i < rows; i++) {
+    let sumRow = 0;
+    for (let j = 0; j < columns; j++) {
+      if (matrix[i][j] % 2 !== 0) {
+        sumRow += matrix[i][j];
+      }
+    }
+    sumInRow.push(sumRow);
+  }
+
+  console.log("Суммы нечетных элементов в каждой строке:");
+  console.log(sumInRow);
+
+  let sumInCol = [];
+  for (let j = 0; j < columns; j++) {
+    let sumCol = 0;
+    for (let i = 0; i < rows; i++) {
+      if (matrix[i][j] % 2 !== 0) {
+        sumCol += matrix[i][j];
+      }
+    }
+    sumInCol.push(sumCol);
+  }
+
+  console.log("Суммы нечетных элементов в каждом столбце:");
+  console.log(sumInCol);
+
+  
+
+</script>

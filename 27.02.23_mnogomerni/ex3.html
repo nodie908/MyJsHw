@@ -1,0 +1,88 @@
+<script>
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomMatrix(rows, columns) {
+        if (!rows || !columns) return [];
+
+        let matrix = [];
+        for (let i = 0; i < rows; i++) {
+            matrix.push([]);
+            for (let j = 0; j < columns; j++) {
+                matrix[i].push(getRandomInt(-10, 10));
+            }
+        }
+        return matrix;
+    }
+
+    function findLocalMinMax(matrix) {
+        let localMin = [];
+        let localMax = [];
+
+        for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                let value = matrix[i][j];
+                let isMin = true;
+                let isMax = true;
+
+                for (let k = i - 1; k <= i + 1; k++) {
+                    for (let l = j - 1; l <= j + 1; l++) {
+                        if (k >= 0 && k < matrix.length && l >= 0 && l < matrix[i].length && (k !== i || l !== j)) {
+                            if (matrix[k][l] <= value) {
+                                isMin = false;
+                            }
+                            if (matrix[k][l] >= value) {
+                                isMax = false;
+                            }
+                        }
+                    }
+                }
+
+                if (isMin) {
+                    localMin.push([i, j]);
+                }
+                if (isMax) {
+                    localMax.push([i, j]);
+                }
+            }
+        }
+
+        return [localMin, localMax];
+    }
+
+    let rows = 5;
+    let columns = 4;
+    let matrix = getRandomMatrix(rows, columns);
+
+    console.log("Матрица:");
+    console.table(matrix);
+
+    let [localMin, localMax] = findLocalMinMax(matrix);
+
+    document.write("<pre>");
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            document.write(matrix[i][j] + "\t");
+        }
+        document.write("\n");
+    }
+    document.write("</pre><br>");
+
+
+
+    document.write("<p>Локальные минимумы:</p>");
+    document.write("<ul>");
+    for (let i = 0; i < localMin.length; i++) {
+        document.write("<li>(" + localMin[i][0] + ", " + localMin[i][1] + ")</li>");
+    }
+    document.write("</ul>");
+
+    document.write("<p>Локальные максимумы:</p>");
+    document.write("<ul>");
+    for (let i = 0; i < localMax.length; i++) {
+        document.write("<li>(" + localMax[i][0] + ", " + localMax[i][1] + ")</li>");
+    }
+    document.write("</ul>");
+
+</script>

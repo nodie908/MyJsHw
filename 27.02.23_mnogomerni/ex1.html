@@ -1,0 +1,26 @@
+<script>
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomMatrix(rows, columns) {
+        if (!rows || !columns) return [];
+
+        let matrix = [];
+        for (let i = 0; i < rows; i++) {
+            matrix.push([]);
+            for (let j = 0; j < columns; j++) {
+                matrix[i].push(getRandomInt(-10, 10));
+            }
+            matrix[i] = matrix[i].join('\t');
+        }
+        return matrix.join('<br>');
+    }
+
+    let rows = prompt('How many rows do you want?');
+    let columns = prompt('How many columns do you want?');
+
+    document.write('<pre>' + getRandomMatrix(rows, columns) + '</pre>');
+
+</script>
