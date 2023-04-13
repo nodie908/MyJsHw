@@ -1,0 +1,119 @@
+<script>
+
+    class Matrix {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.data = [];
+            for (let i = 0; i < x; i++) {
+                this.data[i] = []; 2
+                for (let j = 0; j < y; j++) {
+                    this.data[i][j] = 0;
+                }
+            }
+        }
+
+        // Метод для установки значения элемента матрицы
+        set(x, y, value) {
+            this.data[x][y] = value;
+        }
+
+        // Метод для умножения матрицы на число
+        multiply(n) {
+            let result = new Matrix(this.x, this.y);
+            for (let i = 0; i < this.x; i++) {
+                for (let j = 0; j < this.y; j++) {
+                    result.data[i][j] = this.data[i][j] * n;
+                }
+            }
+            return result;
+        }
+
+        // Метод для умножения матрицы на другую матрицу
+        multiply(other) {
+            if (this.y !== other.x) {
+                console.error('Невозможно умножить матрицы: несовместимые размерности');
+                return null;
+            }
+
+            let result = new Matrix(this.x, other.y);
+            for (let i = 0; i < this.x; i++) {
+                for (let j = 0; j < other.y; j++) {
+                    let sum = 0;
+                    for (let k = 0; k < this.y; k++) {
+                        sum += this.data[i][k] * other.data[k][j];
+                    }
+                    result.data[i][j] = sum;
+                }
+            }
+            return result;
+        }
+
+        // Метод для получения суммы всех элементов матрицы
+        sum() {
+            let sum = 0;
+            for (let i = 0; i < this.x; i++) {
+                for (let j = 0; j < this.y; j++) {
+                    sum += this.data[i][j];
+                }
+            }
+            return sum;
+        }
+
+        // Метод для отображения матрицы в виде HTML-таблицы
+        toHTML() {
+            let result = '<table>';
+            for (let i = 0; i < this.x; i++) {
+                result += '<tr>';
+                for (let j = 0; j < this.y; j++) {
+                    result += `<td>${this.data[i][j]}</td>`;
+                }
+                result += '</tr>';
+            }
+            result += '</table>';
+            return result;
+        }
+    }
+
+    
+
+    let x = parseInt(prompt('Введите количество видов продукции:'));
+    let y = parseInt(prompt('Введите количество типов сырья:'));
+
+    //Матрица производства
+    let A = new Matrix(x, y);
+
+    for (let i = 0; i < x; i++) {
+        for (let j = 0; j < y; j++) {
+            A.set(i, j, parseInt(prompt(`Введите кол-во сырья ${j + 1} для прозводства продукции ${i + 1}: `)));
+        }
+    }
+
+    //Стоимость сырья
+    let C = new Matrix(y, 1);
+
+    for (let i = 0; i < y; i++) {
+        C.set(i, 0, parseInt(prompt(`Введите стоимость сырья ${i + 1}:`)));
+    }
+
+    //Матрица плана производства
+    let B = new Matrix(1, x);
+
+    for (let i = 0; i < x; i++) {
+        B.set(0, i, parseInt(prompt(`Введите план выпуска продукции ${i + 1}:`)));
+    }
+
+    //Вычисление матрицы затрат на виды продукции
+    let P = B.multiply(A).multiply(C);
+
+    // Вычисление общей суммы затрат на сырье
+    let totalCost = P.sum();
+
+    // Вывод результатов в документ
+    document.write(`<p>Матрица производства:</p>${A.toHTML()}`);
+    document.write(`<p>Матрица стоимости сырья:</p>${C.toHTML()}`);
+    document.write(`<p>Матрица затрат на виды продукции:</p>${P.toHTML()}`);
+    document.write(`<p>Общая сумма затрат на сырье: ${totalCost}</p>`);
+
+
+</script>
