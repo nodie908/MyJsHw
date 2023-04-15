@@ -1,0 +1,38 @@
+body {
+    background-color: gray;
+}
+
+.back {
+    background-image: url("soccer.jpg");
+    background-size: 100% 100%;
+    width: 1400px;
+    height: 900px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.ball {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 245px;
+    left: 915px;
+    transition: 700ms;
+}
+
+.player {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+}
+
+#player1 {
+    top: 400px;
+    left: 300px;
+}
+
+#player2 {
+    top: 400px;
+    left: 1450px;
+}
+
