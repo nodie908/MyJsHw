@@ -1,0 +1,45 @@
+.field {
+    width: 400px;
+    height: 400px;
+    border: 3px black solid;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cell {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 2px rgb(92, 92, 151) solid;
+    border-radius: 10px;
+    position: absolute;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    background-color: #87CEEB;
+}
+
+.start-button {
+    padding: 25px 45px;
+    margin: 0 auto;
+    border-radius: 15px;
+    background: #008080;
+    border: none;
+    color: white;
+    font-size: 28px;
+    transition: 500ms;
+}
+
+.middle {
+    margin: 0 auto;
+    width: 246px;
+    margin-top: 50px;
+}
