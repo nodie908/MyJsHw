@@ -1,0 +1,29 @@
+.hide {
+    display: none;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.question input[type='radio'] {
+    margin-right: 10px;
+}
+
+.question button {
+    display: block;
+    margin-top: 10px;
+}
+
+#startButton {
+    margin-bottom: 15px;
+}
+
+.img img{
+    border-radius: 10px;
+}
