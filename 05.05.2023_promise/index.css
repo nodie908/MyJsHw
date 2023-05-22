@@ -1,0 +1,18 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+input {
+    margin: 5px;
+}
+
+label {
+    margin: 5px;
+}
+
+#get {
+    margin: 5px;
+    width: 190px;
+}
