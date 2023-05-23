@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Палитра цветов</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+    <h1>Палитра цветов</h1>
+
+    <form id="color-form">
+        <label for="color-name">Название:</label>
+        <input type="text" id="color-name" required placeholder="Введите название цвета">
+
+        <label for="color-type">Тип:</label>
+        <select id="color-type" required>
+            <option value="RGB">RGB</option>
+            <option value="RGBA">RGBA</option>
+            <option value="HEX">HEX</option>
+        </select>
+
+        <label for="color-code">Код цвета:</label>
+        <input type="text" id="color-code" required placeholder="Введите код цвета">
+
+        <button type="submit">Save</button>
+    </form>
+
+    <ul id="color-list">
+
+    </ul>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
