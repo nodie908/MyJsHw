@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href='index.css' rel='stylesheet' type='text/css'>
+  <title>jQuery Anketa</title>
+
+</head>
+
+<body>
+
+  <h1>Заполните анкету</h1>
+
+  <form>
+    <label for="name">Имя:</label>
+    <input type="text" id="name" required>
+
+    <label for="surname">Фамилия:</label>
+    <input type="text" id="surname" required>
+
+    <label for="date">Дата рождения:</label>
+    <input type="date" id="date" required>
+
+    <label for="email">Эл. почта:</label>
+    <input type="email" id="email" required>
+  </form>
+
+  <div class="download-border">
+    <div class="download-str"></div>
+    <span class="show-percent">0%</span>
+  </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script defer src='index.js'></script>
+
+</html>
