@@ -1,0 +1,46 @@
+* {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.block {
+    width: 50%;
+    margin: 0 auto;
+    height: 250px;
+}
+
+.inputFileBtn,
+#voteCount {
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
+#voteCount {
+    margin: 10px 400px 10px 400px;
+}
+
+.modalWin {    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #bcbcbccf;
+    opacity: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 2%;}
+
+.alertWin {    padding: 50px 15px;
+    border: 2px solid #0a4c7e;
+    border-radius: 10px;
+    color: #294d4e;
+    font-size: 24px;
+    text-align: center;
+    background-color: #84d1d2;
+    width: 400px;
+    margin: 0 auto;}
+
+h1 {
+    text-align: center
+}
+
+#inputFile {
+    display: none;
+}
