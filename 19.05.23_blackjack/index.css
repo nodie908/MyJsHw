@@ -1,0 +1,61 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+#dealer-cards img {
+    height: 175px;
+    width: 125px;
+}
+
+#your-cards img {
+    height: 175px;
+    width: 125px;
+}
+
+#hit {
+    height: 50px;
+    width: 60px;
+    font-size: 20px;
+}
+
+#stay {
+    height: 50px;
+    width: 90px;
+    font-size: 20px;
+}
+
+#refresh {
+    height: 50px;
+    width: 90px;
+    font-size: 20px;
+}
+
+.cont {
+    border: 2px rgb(26, 25, 25) solid;
+    border-radius: 50px;
+    width: 1200px;
+    height: 650px;
+    margin: 0 auto;
+    background-color: #006400;
+}
+
+.cont img {
+    margin: 5px;
+    border: 2px grey dashed;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+.card-image {
+    animation: fade-in 500ms ease-in;
+}
+
+@keyframes fade-in {
+    0% {transform: translateY(-30px);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
